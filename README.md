@@ -18,6 +18,22 @@ Aqui, vamos entender as desvantagens de utilizar comunização síncrona e iremo
 
 
 
+## ▶️ Como rodar
+
+Para executar a aplicação `pagamentos`, é necessário subir antes os dois containers abaixo (requer o [Docker](https://www.docker.com/)):
+
+```bash
+# MySQL (usuário root / senha root)
+docker run -d --name mysql-alura -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:8
+
+# RabbitMQ (usuário guest / senha guest) - painel em http://localhost:15672
+docker run -d --name rabbit-alura -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+```
+
+O banco `alurafood-pagamento` é criado automaticamente na primeira execução. Aguarde alguns segundos para o MySQL terminar de iniciar antes de rodar a aplicação.
+
+> O servidor Eureka (porta 8081) é opcional: sem ele a aplicação apenas exibe avisos de registro.
+
 ## 🔗 Links
 
 - [RabbitMQ](https://www.rabbitmq.com/) 
